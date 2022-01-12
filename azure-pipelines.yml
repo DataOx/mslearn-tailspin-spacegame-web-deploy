@@ -27,7 +27,7 @@ stages:
         version: '$(dotnetSdkVersion)'
 
     - task: NodeTool@0
-      displayName: 'Use .NET SDK $(dotnetSdkVersion)'
+      displayName: 'nodejs tool installer'
       inputs:
         versionSpec: '14.x'
 
