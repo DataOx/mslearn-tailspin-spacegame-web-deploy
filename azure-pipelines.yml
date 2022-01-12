@@ -2,7 +2,7 @@ trigger:
   - '*'
 
 variables:
-  buildConfiguration: 'tailspin-example-release'
+  buildConfiguration: 'Release'
   releaseBranchName: 'release'
 
 stages:
@@ -25,6 +25,11 @@ stages:
       displayName: 'Use .NET SDK $(dotnetSdkVersion)'
       inputs:
         version: '$(dotnetSdkVersion)'
+
+    - task: NodeTool@0
+      displayName: 'Use .NET SDK $(dotnetSdkVersion)'
+      inputs:
+        versionSpec: '14.x'
 
     - task: Npm@1
       displayName: 'Run npm install'
@@ -79,7 +84,7 @@ stages:
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
-    environment: dev
+    environment: tailspin-dev
     variables:
     - group: Release
     strategy:
