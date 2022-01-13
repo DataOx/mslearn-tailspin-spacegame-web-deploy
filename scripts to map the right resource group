@@ -1,0 +1,36 @@
+az appservice plan create \
+  --name tailspin-space-game-asp \
+  --resource-group mlops-RG \
+  --sku B1 \
+  --is-linux
+  
+  
+az webapp create \
+  --name tailspin-space-game-web-dev-$webappsuffix \
+  --resource-group mlops-RG \
+  --plan tailspin-space-game-asp \
+  --runtime "DOTNET|5.0"
+
+az webapp create \
+  --name tailspin-space-game-web-test-$webappsuffix \
+  --resource-group mlops-RG \
+  --plan tailspin-space-game-asp \
+  --runtime "DOTNET|5.0"
+
+az webapp create \
+  --name tailspin-space-game-web-staging-$webappsuffix \
+  --resource-group mlops-RG \
+  --plan tailspin-space-game-asp \
+  --runtime "DOTNET|5.0"
+  
+az webapp list \
+  --resource-group mlops-RG \
+  --query "[].{hostName: defaultHostName, state: state}" \
+  --output table
+  
+  
+az appservice plan create \
+  --name tailspin-space-game-test-asp \
+  --resource-group mlops-RG \
+  --sku B1 \
+  --is-linux
