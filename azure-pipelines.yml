@@ -96,7 +96,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: 'Sandbox-aml-workspace'
+              azureSubscription: 'Sandbox-aml-workspace'  # It means azure service connection, not auzre subscription. 
               appType: 'webAppLinux'
               appName: '$(WebAppNameDev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
