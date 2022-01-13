@@ -96,7 +96,8 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: 'Sandbox - Products / Smart Product Technology (VINC)'
+              # link this to auth
+              azureSubscription: 'Sandbox - Products / Smart Product Technology (VINC)'   
               appType: 'webAppLinux'
               appName: '$(WebAppNameDev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
