@@ -1,3 +1,8 @@
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+
+
 az appservice plan create \
   --name tailspin-space-game-asp \
   --resource-group mlops-RG \
@@ -33,4 +38,10 @@ az appservice plan create \
   --name tailspin-space-game-test-asp \
   --resource-group mlops-RG \
   --sku B1 \
+  --is-linux
+  
+az appservice plan create \
+  --name tailspin-space-game-prod-asp \
+  --resource-group mlops-RG  \
+  --sku P1V2 \
   --is-linux
